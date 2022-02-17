@@ -71,8 +71,10 @@ To verify the DERP server is working, run the following command on one of your L
 tailscale netcheck
 ```
 
-Your DERP server should be displayed on the resulting list, as well as the latency between it and the Linux node
+Your DERP server should be displayed on the resulting list, as well as the latency between it and the Linux node.
+
 If no latency information appears, then the connection wasn't successful. Please verify that you setup port forwarding on ports 443 (TCP) and 3478 (TCP & UDP) on your router correctly.
+
 If the DERP server does not appear on the list, run the following command and try again
 
 ```

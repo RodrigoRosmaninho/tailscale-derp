@@ -1,0 +1,22 @@
+version: '3'
+services:
+    tailscale_derp:
+        hostname: tailscale_derp
+        build: .
+        privileged: true
+        restart: always
+        ports:
+         - 443:443
+         - 3478:3478/tcp
+         - 3478:3478/udp
+        cap_add:
+         - NET_ADMIN
+        volumes:
+         - /dev/net/tun:/dev/net/tun
+         - /etc/letsencrypt/live/your.domain.name/fullchain.pem:/cert/your.domain.name.crt
+         - /etc/letsencrypt/live/your.domain.name/privkey.pem:/cert/your.domain.name.key
+        environment:
+         - TAILSCALE_AUTH_KEY=YOUR-TAILSCALE-KEY
+         - TAILSCALE_HOSTNAME=YOUR-DESIRED-HOSTNAME
+         - DERP_DOMAIN=your.domain.name
+
